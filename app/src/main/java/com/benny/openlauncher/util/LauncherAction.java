@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.View;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -127,6 +128,11 @@ public class LauncherAction {
                 context.startActivity(new Intent(context, SettingsActivity.class));
                 break;
             case VolumeDialog:
+
+                /** Themis-#67 */
+                Log.i("Themis-#67", "Step 1: Clicked the \"Volume\" icon in the drawer. The crash will occur, if open the \"Do not disturb\" pref in settings.");
+                /** Themis-#67 */
+
                 AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
                 audioManager.setStreamVolume(AudioManager.STREAM_RING, audioManager.getStreamVolume(AudioManager.STREAM_RING), AudioManager.FLAG_SHOW_UI);
                 break;
