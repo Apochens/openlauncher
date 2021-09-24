@@ -130,7 +130,7 @@ public class LauncherAction {
             case VolumeDialog:
 
                 /** Themis-#67 */
-                Log.i("Themis-#67", "Step 1: Clicked the \"Volume\" icon in the drawer. The crash will occur, if open the \"Do not disturb\" pref in settings.");
+                Log.i("Themis", "Step 1: Clicked the \"Volume\" icon in the drawer. The crash will occur, if open the \"Do not disturb\" pref in settings.");
                 /** Themis-#67 */
 
                 AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
