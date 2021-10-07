@@ -130,11 +130,16 @@ public class LauncherAction {
             case VolumeDialog:
 
                 /** Themis-#67 */
-                Log.i("Themis", "Step 1: Clicked the \"Volume\" icon in the drawer. The crash will occur, if open the \"Do not disturb\" pref in settings.");
+                Log.i("Themis", "Event 1: Clicked the \"Volume\" icon in the drawer.");
                 /** Themis-#67 */
 
                 AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-                audioManager.setStreamVolume(AudioManager.STREAM_RING, audioManager.getStreamVolume(AudioManager.STREAM_RING), AudioManager.FLAG_SHOW_UI);
+                try {
+                    audioManager.setStreamVolume(AudioManager.STREAM_RING, audioManager.getStreamVolume(AudioManager.STREAM_RING), AudioManager.FLAG_SHOW_UI);
+                } catch (SecurityException e) {
+                    Log.i("Themis", "Crash!: SecurityException.");
+                    throw e;
+                }
                 break;
             case OpenAppDrawer:
                 Home.launcher.openAppDrawer();
